@@ -9,8 +9,11 @@
    				http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
    				http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	
+	<import resource="beans.xml"/>
 
-	<bean id="student" class="com.classpath.di.Student" init-method="myCustomInit" destroy-method="myCustomDestroy">
+	<bean id="student" class="com.classpath.di.Student" init-method="myCustomInit" destroy-method="myCustomDestroy" lazy-init="true">
 		<constructor-arg  ref="collegeService"></constructor-arg>
 		<property name="name" value="Pradeep"></property>
 		<property name="age" value="22"></property>
@@ -44,8 +47,6 @@
 	</property>
 	</bean>
 
-	<bean id="newCollegeService" class="com.classpath.di.NewCollege">
-	</bean>
 	
 	<bean id="address" class="com.classpath.di.Address">
 	   <property name="city" value="Bangalore"></property>
@@ -83,6 +84,9 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="userName" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<bean id="customBeanPostProcessor" class="com.classpath.postprocessor.MyCustomBeanPostProcessor">
 	</bean>
 
 </beans>

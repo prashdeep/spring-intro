@@ -6,7 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringClient {
 	
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext context = new 
+				ClassPathXmlApplicationContext("applicationContext.xml");
 		Student student = context.getBean("student", Student.class);
 		//student.applyLeave(12);
 		//System.out.println(student.getAddress());
