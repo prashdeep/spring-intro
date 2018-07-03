@@ -1,7 +1,5 @@
 package com.classpath.di;
 
-import java.util.Set;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,7 +14,9 @@ public class SpringClient {
 		//Set<Course> setOfCourses = student.getCourses();
 		//System.out.println(setOfCourses);
 		//System.out.println(student.getPetNames());
-		System.out.println(((College)student.getCollegeService()).getCollegeMap());
+		//System.out.println(((College)student.getCollegeService()).getCollegeMap());
+		DataSource dataSource = context.getBean("dataSource" , DataSource.class);
+		System.out.println(dataSource.getDriverClassName());
 		
 		
 	}
