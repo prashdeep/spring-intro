@@ -10,7 +10,7 @@
    				http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-	<bean id="student" class="com.classpath.di.Student">
+	<bean id="student" class="com.classpath.di.Student" init-method="myCustomInit" destroy-method="myCustomDestroy">
 		<constructor-arg  ref="collegeService"></constructor-arg>
 		<property name="name" value="Pradeep"></property>
 		<property name="age" value="22"></property>
@@ -67,6 +67,22 @@
 	</bean>
 		<bean id="botany" class="com.classpath.di.Course">
 		<constructor-arg value="Botany"></constructor-arg>
+	</bean>
+	
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>database.properties</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="com.classpath.di.DataSource">
+
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="userName" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
 
 </beans>

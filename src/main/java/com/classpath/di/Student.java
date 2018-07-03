@@ -15,6 +15,10 @@ public class Student {
 	
 	private List<String> petNames;
 	
+	public	Student() {
+		System.out.println("Called inside the constructor.......");
+	}
+	
 	public List<String> getPetNames() {
 		return petNames;
 	}
@@ -67,11 +71,27 @@ public class Student {
 	}
 
 	public Student(CollegeService college) {
+		System.out.println("Called from inside the constructor.............");
 		this.collegeService = college;
 	}
 	
 	public void applyLeave(int days) {
 		collegeService.applyForLeave(days);
 	}
+	
+	public void myCustomInit() {
+		System.out.println("****************************|");
+		System.out.println("Initializing the Student Bean");
+		System.out.println("****************************|");
+		
+	}
+	
+	public void myCustomDestroy() {
+		System.out.println("****************************|");
+		System.out.println("Destroying the Student Bean");
+		System.out.println("****************************|");
+		
+	}
+
 
 }
