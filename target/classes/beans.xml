@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 	
+                http://www.springframework.org/schema/aop 
+   				http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+   				http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	
+	<bean id="newCollegeService" class="com.classpath.di.NewCollege">
+	</bean>
+	
+	
+	<bean id="dbConnectionFactory" class="com.classpath.spring.bean.scope.DBConnectionFactory">
+	  <property name="connectionFactoryName" value="Oracle DB"> </property>
+	</bean>
+	
+	<bean id="dbConnection" class="com.classpath.spring.bean.scope.DBConnection"  scope="prototype">
+		<property name="name" value="Oracle"></property>
+		<property name="url" value="jdbc:oracle:thin:5506"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="password"></property>
+	</bean>
+	
+	<bean id="parentBean" class="com.classpath.spring.inheritance.BaseClass" abstract="true"> 
+	</bean>
+	
+	<bean id="derived" class="com.classpath.spring.inheritance.DerivedClass" parent="parentBean">
+	</bean>
+	
+	
+		<!-- Definition for student bean -->
+   <bean id = "studentProxy" class = "com.classpath.aop.annotation.Student">
+      <property name = "name" value = "Pradeep" />
+      <property name = "age"  value = "34"/>      
+   </bean>
+	
+	
+	<!--  Aspect Oriented Programming -->
+	<aop:config>
+		<aop:aspect id="log" ref="logging">
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.classpath.aop.annotation..*(..))" />
+
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+			<aop:after-returning pointcut-ref="selectAll"
+				returning="retVal" method="afterReturningAdvice" />
+
+			<aop:after-throwing pointcut-ref="selectAll"
+				throwing="ex" method="AfterThrowingAdvice" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id = "logging" class = "com.classpath.aop.annotation.Logging"/>
+	
+</beans>
