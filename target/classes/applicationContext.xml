@@ -12,12 +12,61 @@
 
 	<bean id="student" class="com.classpath.di.Student">
 		<constructor-arg  ref="collegeService"></constructor-arg>
+		<property name="name" value="Pradeep"></property>
+		<property name="age" value="22"></property>
+		<property name="address" ref="address"></property>
+		<property name="courses">
+		   <set  value-type="com.classpath.di.Course">
+		     <value>physics</value>
+		     <value>chemistry</value>
+		     <value>maths</value>
+		     <value>botany</value>		     
+		   </set>
+		</property>
+		<property name="petNames">
+		   <list>
+		     <value>Ramesh</value>
+		     <value>Suresh</value>
+		   </list>
+		</property>
 	</bean>
 
 	<bean id="collegeService" class="com.classpath.di.College">
+	<property name="collegeMap">
+	   <map>
+	     <entry key="1" value="RV College Of Engineering"></entry>
+	     <entry key="2" value="KIT Engineering"></entry>
+	     <entry key="3" value="RV College Of Engineering"></entry>
+	     <entry key="4" value="RV College Of Engineering"></entry>
+	     <entry key="5" value="RV College Of Engineering"></entry>
+	     
+	   </map>
+	</property>
 	</bean>
 
 	<bean id="newCollegeService" class="com.classpath.di.NewCollege">
+	</bean>
+	
+	<bean id="address" class="com.classpath.di.Address">
+	   <property name="city" value="Bangalore"></property>
+	   <property name="state" value="Karnataka"></property>
+	   <property name="street" value="1st Cross, RajajiNagar"></property>
+	</bean>
+	
+	<bean id="physics" class="com.classpath.di.Course">
+		<constructor-arg value="Physics"></constructor-arg>
+	</bean>
+		<bean id="chemistry" class="com.classpath.di.Course">
+		<constructor-arg value="Chemistry"></constructor-arg>
+	</bean>
+	<bean id="zoology" class="com.classpath.di.Course">
+		<constructor-arg value="Zoology"></constructor-arg>
+	</bean>
+		<bean id="maths" class="com.classpath.di.Course">
+		<constructor-arg value="Mahths"></constructor-arg>
+	</bean>
+		<bean id="botany" class="com.classpath.di.Course">
+		<constructor-arg value="Botany"></constructor-arg>
 	</bean>
 
 </beans>
