@@ -31,4 +31,31 @@
 	
 	<bean id="derived" class="com.classpath.spring.inheritance.DerivedClass" parent="parentBean">
 	</bean>
+	
+	
+		<!-- Definition for student bean -->
+   <bean id = "studentProxy" class = "com.classpath.aop.annotation.Student">
+      <property name = "name" value = "Pradeep" />
+      <property name = "age"  value = "34"/>      
+   </bean>
+	
+	
+	<!--  Aspect Oriented Programming -->
+	<aop:config>
+		<aop:aspect id="log" ref="logging">
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.classpath.aop.annotation..*(..))" />
+
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+			<aop:after-returning pointcut-ref="selectAll"
+				returning="retVal" method="afterReturningAdvice" />
+
+			<aop:after-throwing pointcut-ref="selectAll"
+				throwing="ex" method="AfterThrowingAdvice" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id = "logging" class = "com.classpath.aop.annotation.Logging"/>
+	
 </beans>
