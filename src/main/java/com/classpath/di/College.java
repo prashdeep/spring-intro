@@ -1,6 +1,6 @@
 package com.classpath.di;
 
-public class College {
+public class College implements CollegeService {
 	
 	
 	public void applyForLeave(int daysOfLeave) {

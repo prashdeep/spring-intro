@@ -2,14 +2,24 @@ package com.classpath.di;
 
 public class Student {
 	
-	private College college;
+	private CollegeService collegeService;
 	
+	
+
+	public CollegeService getCollegeService() {
+		return collegeService;
+	}
+
+	public void setCollegeService(CollegeService collegeService) {
+		this.collegeService = collegeService;
+	}
+
 	public Student(College college) {
-		this.college = college;
+		this.collegeService = college;
 	}
 	
 	public void applyLeave(int days) {
-		college.applyForLeave(days);
+		collegeService.applyForLeave(days);
 	}
 
 }
