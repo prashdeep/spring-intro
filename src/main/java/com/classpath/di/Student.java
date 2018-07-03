@@ -3,8 +3,6 @@ package com.classpath.di;
 public class Student {
 	
 	private CollegeService collegeService;
-	
-	
 
 	public CollegeService getCollegeService() {
 		return collegeService;
@@ -14,7 +12,7 @@ public class Student {
 		this.collegeService = collegeService;
 	}
 
-	public Student(College college) {
+	public Student(CollegeService college) {
 		this.collegeService = college;
 	}
 	
