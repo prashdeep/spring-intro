@@ -13,5 +13,22 @@
 	
 	<bean id="newCollegeService" class="com.classpath.di.NewCollege">
 	</bean>
-
+	
+	
+	<bean id="dbConnectionFactory" class="com.classpath.spring.bean.scope.DBConnectionFactory">
+	  <property name="connectionFactoryName" value="Oracle DB"> </property>
+	</bean>
+	
+	<bean id="dbConnection" class="com.classpath.spring.bean.scope.DBConnection"  scope="prototype">
+		<property name="name" value="Oracle"></property>
+		<property name="url" value="jdbc:oracle:thin:5506"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="password"></property>
+	</bean>
+	
+	<bean id="parentBean" class="com.classpath.spring.inheritance.BaseClass" abstract="true"> 
+	</bean>
+	
+	<bean id="derived" class="com.classpath.spring.inheritance.DerivedClass" parent="parentBean">
+	</bean>
 </beans>

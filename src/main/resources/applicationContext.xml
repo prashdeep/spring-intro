@@ -86,7 +86,9 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<bean id="customBeanPostProcessor" class="com.classpath.postprocessor.MyCustomBeanPostProcessor">
-	</bean>
+	<!--  <bean id="customBeanPostProcessor" class="com.classpath.postprocessor.MyCustomBeanPostProcessor">
+	</bean>  -->
+	
+	
 
 </beans>
